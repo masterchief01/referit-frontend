@@ -20,8 +20,6 @@ const GoogleSignInPage = ({setAuth, token , setToken, setSignUp}) => {
 			.signInWithPopup(new firebase.auth.GoogleAuthProvider())
 			.then((userCred) => {
                 if(userCred) {
-					setAuth(true);
-					window.localStorage.setItem('auth', 'true');
                     const user = {
                         name: userCred.user.displayName,
                         email: userCred.user.email,
@@ -44,6 +42,9 @@ const GoogleSignInPage = ({setAuth, token , setToken, setSignUp}) => {
                                 let path = `/users/${userId}`;
                                 navigate(path);
                             }
+
+                            setAuth(true);
+					        window.localStorage.setItem('auth', 'true');
                             
                         })
                         .catch((err)=>{
