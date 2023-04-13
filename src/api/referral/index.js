@@ -42,7 +42,7 @@ export const getReferralByJob = async (jobId) => {
 
     // console.log(comp);
     const token = window.localStorage.getItem('token');
-    const res = await axios.get(`${url}/jobId?jobId=${jobId}`,{
+    const res = await axios.get(`${url}/job?jobId=${jobId}`,{
             headers: {
                 authorization: 'Bearer ' + token,
             }

@@ -12,7 +12,9 @@ import { getOwnUser } from '../../../api/user';
 
 const JobCard = (props) => {
 
-    const jobid = useParams('jobId');
+    const {jobId} = useParams();
+    const jobid = jobId;
+    console.log(jobid)
     let navigate = useNavigate();
     let tempObj = {};
     tempObj.postedBy = {id: "", name: "", infotext: ""};
