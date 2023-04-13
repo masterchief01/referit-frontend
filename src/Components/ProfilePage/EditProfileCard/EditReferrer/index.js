@@ -105,6 +105,7 @@ const EditReferrer = ({ token, data, setData, heading, buttonLabel, setSignUp, s
                       onChange={(e) => handle(e)}
                       required
                     >
+                      <option value="">Select Company</option>
                       <option value="microsoft">Microsoft</option>
                       <option value="google">Google</option>
                       <option value="adobe">Adobe</option>
