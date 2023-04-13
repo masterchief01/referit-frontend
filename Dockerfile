@@ -8,7 +8,7 @@ COPY . .
 
 RUN yarn --frozen-lockfile
 
-# RUN yarn build
+RUN yarn build
 
 # ENV VARS HERE IF REQUIRED FOR IP ADDRESS OF BACKEND
 # ENV REACT_APP_baseAPIURL=192.168.49.2:31669
@@ -17,5 +17,5 @@ RUN yarn --frozen-lockfile
 # COPY --from=frontend-build /frontend/build/ /usr/share/nginx/html
 
 EXPOSE 3000
-
 CMD ["yarn", "start"]
+# CMD ["nginx", "-g", "daemon off;"]
