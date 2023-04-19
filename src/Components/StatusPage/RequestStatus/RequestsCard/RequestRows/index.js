@@ -35,7 +35,7 @@ const RequestRows = ({ cur_comp,token, obj , isApplied,userId,id}) => {
     <Row className={styles.rw}>
       <Col>{obj.company}</Col>
       <Col>{obj.jobId}</Col>
-      {obj.company.toLowerCase()===cur_comp.toLowerCase() && userId===id?<Col><a style={{color: "black"}} href={`/referralrequests/${obj.id}`}>Show Referral Requests</a></Col>:<Col>You can not Refer for this job</Col>}
+      {obj.company===cur_comp && userId===id?<Col><a style={{color: "black"}} href={`/referralrequests/${obj.id}`}>Show Referral Requests</a></Col>:<Col>You can not Refer for this job</Col>}
       <Col><Button onClick={closeJob} disabled={(userId !== id) || (!isActive)}>Close Job</Button></Col>
     </Row>}
     </>
