@@ -23,7 +23,7 @@ const IntroCard = () => {
         <Card className={styles.midCard}>
             <Row>
                 <Col className={styles.fstCol}>
-                <h1 className={styles.hd}>{wish} Welcome to ReferralHub</h1>
+                <h1 className={styles.hd}>{wish} Welcome to ReferIt</h1>
                 <div>
                     This website is about making referral process easier. Here you can post jobs. You can request referral for jobs. You can see all the referral requests available and also you can give feedback, reject referral or refer referral.
                 </div>

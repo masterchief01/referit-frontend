@@ -14,11 +14,12 @@ const ReferralRequestReviewModal = (props) => {
     useEffect(()=>{
         setUser(props.user);
     },[props.user]);
-
+  
   
   return (<>
-         
+        
         <button className={ButtonStyles.submitButton} onClick={handleShow}> {props.buttonLabel} </button>
+        
 
         <Modal 
             // {...props}

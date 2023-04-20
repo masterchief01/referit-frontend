@@ -24,6 +24,12 @@ const NavigationCard = () => {
         navigate(path);
         // console.log("button click");
     }
+
+    const func3 = ()=>{
+        let path=`/archive`;
+        navigate(path);
+        // console.log("button click");
+    }
     return (
         <Card className={styles.card}>
             <Row className="justify-content-center">
@@ -32,6 +38,12 @@ const NavigationCard = () => {
             <Row className="justify-content-center">
                 <Button label="Check Status" handleClick={func2}/>
             </Row>
+            {isReferee==='true'?
+                <Row className="justify-content-center">
+                    <Button label="Referral Archive" handleClick={func3}/>
+                </Row>:null
+            }
+            
         </Card>
     )
 }

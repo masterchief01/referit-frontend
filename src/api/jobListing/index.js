@@ -43,7 +43,22 @@ export const getJob = async (jobid) => {
 }
 
 export const getJobList = async () => {
-    let res = await axios.get(`${url}`);
+    const token = window.localStorage.getItem('token');
+    let res = await axios.get(`${url}`,{
+        headers:{
+            authorization: 'Bearer ' + token,
+        }
+    });
+    return res.data;
+}
+
+export const getReferralArchive = async () => {
+    const token = window.localStorage.getItem('token');
+    let res = await axios.get(`${url}/referralArchive`,{
+        headers:{
+            authorization: 'Bearer ' + token,
+        }
+    });
     return res.data;
 }
 

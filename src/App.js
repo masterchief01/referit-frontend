@@ -14,6 +14,7 @@ import ReferralRequestPage from "./Components/ReferralRequestPage";
 import JobCreatePage from "./Components/JobCreatePage";
 import OpenJobs from "./Components/OpenJobs";
 import OpenReferralRequests from "./Components/OpenReferralRequests";
+import ArchivePage from "./Components/ArchivePage"
 
 
 const App = () => {
@@ -84,6 +85,9 @@ const App = () => {
                 }/>
                 <Route exact path="/referralrequests/:jobId" element={
                     <OpenReferralRequests token={token}/>
+                }/>
+                <Route exact path="/archive" element={
+                    <ArchivePage token={token}/>
                 }/>
               </Routes>
             </>} />

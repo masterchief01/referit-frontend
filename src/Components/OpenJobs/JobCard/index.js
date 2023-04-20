@@ -14,7 +14,7 @@ const JobCard = (props) => {
 
     const {jobId} = useParams();
     const jobid = jobId;
-    console.log(jobid)
+    // console.log(jobid)
     let navigate = useNavigate();
     let tempObj = {};
     tempObj.postedBy = {id: "", name: "", infotext: ""};
@@ -40,7 +40,7 @@ const JobCard = (props) => {
         }
         if(props.obj === undefined)
         {
-            console.log(jobid)
+            // console.log(jobid)
             getJob(jobid).then((res) => {
                 if(res)
                     setObj(res);
@@ -65,23 +65,29 @@ const JobCard = (props) => {
         }
       })
     }    
-  return <Card className={styles.card}>
-            <a href={`/users/${obj.postedBy.id}`} className={styles.headingSection}>
-                <h4 className={styles.heading}>{obj.postedBy.name}</h4>
-            </a>
-            <div className={styles.infotext}>{obj.postedBy.infotext}</div>
-            <div className={styles.middleSection}>
-                <div>Company - {obj.company}</div>
-                {obj.jobId?<div>JOB ID - {obj.jobId}</div>:null}
-                {obj.jobLink?<div>JOB Link - <a rel="noreferrer" target="_blank" style={{textDecoration: "none",backgroundColor:"lightgreen"}} href={obj.jobLink}>Click Here</a></div>:null}
-            </div>
-            <div className={styles.description}>
-                {obj.desc}
-            </div>
-            <div className={styles.buttonSection}>
-            <ReferralRequestReviewModal user={user} token={props.token} buttonLabel={"REQUEST"} heading={"Confirm"} msg={"Kindly check your details"} SubmitFunction={SubmitFunction} company={obj.company} jobId={obj.jobId} jobLink={obj.jobLink}/>
-            </div>
-        </Card>;
+  return (
+    <>
+        {(props.obj.requested===true)?null:
+            <Card className={styles.card}>
+                <a href={`/users/${obj.postedBy.id}`} className={styles.headingSection}>
+                    <h4 className={styles.heading}>{obj.postedBy.name}</h4>
+                </a>
+                <div className={styles.infotext}>{obj.postedBy.infotext}</div>
+                <div className={styles.middleSection}>
+                    <div>Company - {obj.company}</div>
+                    {obj.jobId?<div>JOB ID - {obj.jobId}</div>:null}
+                    {obj.jobLink?<div>JOB Link - <a rel="noreferrer" target="_blank" style={{textDecoration: "none",backgroundColor:"lightgreen"}} href={obj.jobLink}>Click Here</a></div>:null}
+                </div>
+                <div className={styles.description}>
+                    {obj.desc}
+                </div>
+                <div className={styles.buttonSection}>
+                <ReferralRequestReviewModal user={user} token={props.token} buttonLabel={"REQUEST"} heading={"Confirm"} msg={"Kindly check your details"} SubmitFunction={SubmitFunction} company={obj.company} jobId={obj.jobId} jobLink={obj.jobLink} requested={obj.requested}/>
+                </div>
+            </Card>
+        }
+    </>
+    );
 };
 
 export default withRouter(JobCard);
