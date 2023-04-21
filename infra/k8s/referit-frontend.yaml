@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: referit-frontend-deployment
+  namespace: referit
+  labels:
+    app: referit-frontend
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 100%
+  selector:
+    matchLabels:
+      app: referit-frontend
+  template:
+    metadata:
+      labels:
+        app: referit-frontend
+    spec:
+      containers:
+      - name: referit-frontend
+        image: masterchief01/referit-frontend:latest
+        ports:
+        - containerPort: 3001
+        imagePullPolicy: Always
+        envFrom:
+        - configMapRef:
+            name: referit-frontend-configmap
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: referit-frontend-service
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 3001
+  selector:
+    app: referit-frontend

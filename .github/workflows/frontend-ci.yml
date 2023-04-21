@@ -17,8 +17,8 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
-    # - name: Test
-    #   run: yarn test
+    - name: Test
+      run: yarn test
 
     - name: Docker Login
       uses: docker/login-action@v1.14.1
@@ -35,4 +35,33 @@ jobs:
 
     - name: Image ID
       run: echo ${{ steps.build_push.outputs.imageid }}
-# RUN AZURE PIPELINE FOR KUBERNETES ROLLOUT
+# NOW, RUN THE AZURE CLI TO ROLLOUT KUBERNETES UPDATE
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source code 
+        uses: actions/checkout@v3
+
+      - name: Azure login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Setup kubectl
+        id: install-kubectl
+        uses: azure/setup-kubectl@v3
+
+      - name: Set AKS context
+        id: set-context
+        uses: azure/aks-set-context@v3
+        with:
+          resource-group: '${{ secrets.RESOURCE_GROUP }}' 
+          cluster-name: '${{ secrets.CLUSTER_NAME }}'
+      
+      - name: Get all Resources from Azure Cluster
+        run: kubectl get all -n referit
+
+      - name: Perform Rolling Update of Cluster Resources
+        run: | 
+          bash scripts/rollout-infra.sh
