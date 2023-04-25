@@ -72,7 +72,7 @@ const GoogleSignInPage = ({setAuth, token , setToken, setSignUp}) => {
                     <h3>Sign in</h3>
                     {stu?<><div style={{marginBottom: "20px"}}>Sign In as a Student</div></>:
                     <><div style={{marginBottom: "20px"}}>Sign In as a Professional</div></>}
-                    <button onClick={signInWithGoogle} className={styles.gglbtn} style={{marginBottom: "20px"}}><img src={googleIcon} alt="icon" /> Sign in with Google</button> 
+                    <button onClick={signInWithGoogle} className={styles.gglbtn} style={{marginBottom: "20px"}} type='button'><img src={googleIcon} alt="icon" /> Sign in with Google</button> 
             </div>
             
         </div>
