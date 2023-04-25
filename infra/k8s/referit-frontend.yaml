@@ -6,13 +6,6 @@ metadata:
   labels:
     app: referit-frontend
 spec:
-  replicas: 1
-  revisionHistoryLimit: 2
-  strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxSurge: 1
-      maxUnavailable: 100%
   selector:
     matchLabels:
       app: referit-frontend
@@ -25,7 +18,7 @@ spec:
       - name: referit-frontend
         image: masterchief01/referit-frontend:latest
         ports:
-        - containerPort: 3001
+        - containerPort: 3000
         imagePullPolicy: Always
         envFrom:
         - configMapRef:
@@ -35,10 +28,11 @@ apiVersion: v1
 kind: Service
 metadata:
   name: referit-frontend-service
+  namespace: referit
 spec:
-  type: LoadBalancer
-  ports:
-  - port: 80
-    targetPort: 3001
   selector:
     app: referit-frontend
+  ports:
+  - name: http
+    port: 3000
+    targetPort: 3000
