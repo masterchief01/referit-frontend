@@ -33,7 +33,7 @@ const ReferralCard = (props) => {
                 <div className={styles.buttonSection}>
                     <Button disabled> Requested </Button>
                 </div>
-            </Card>:null};
+            </Card>:null}
     </>
   );
 };
