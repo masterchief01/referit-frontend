@@ -1,6 +1,5 @@
 import React from 'react'
 import styles from './styles/style.module.css'
-import logo from '../../Assets/images/logoR.png'
 import { useState } from 'react'
 import googleIcon from '../../Assets/images/google.svg'
 import firebase from 'firebase/compat/app';
@@ -59,8 +58,6 @@ const GoogleSignInPage = ({setAuth, token , setToken, setSignUp}) => {
   return (
     <div className={styles.container}>
         <div className={styles.heading}>
-            <img className={styles.headingLogo} src={logo} alt="logo" />
-            <h1 className={styles.headingText}>REFER IT</h1>
         </div>
         <div className={styles.midCard}>
             {stu?<><button style={{backgroundColor: "#1b1bd2"}} className={styles.buttonF} onClick={()=>setStu(true)}>STUDENT</button>
@@ -74,7 +71,6 @@ const GoogleSignInPage = ({setAuth, token , setToken, setSignUp}) => {
                     <><div style={{marginBottom: "20px"}}>Sign In as a Professional</div></>}
                     <button onClick={signInWithGoogle} className={styles.gglbtn} style={{marginBottom: "20px"}}><img src={googleIcon} alt="icon" /> Sign in with Google</button> 
             </div>
-            
         </div>
     </div>
   )

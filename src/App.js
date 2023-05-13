@@ -5,6 +5,7 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import { Container } from 'react-bootstrap';
 
+import SignInPageHeader from "./Components/SignInPageHeader";
 import GoogleSignInPage from "./Components/GoogleSignInPage";
 import Header from './Components/Header';
 import IntroPage from './Components/IntroPage';
@@ -53,7 +54,12 @@ const App = () => {
     <>
       <Router>
         <Routes>
-          <Route exact path = '/signin' element = {<GoogleSignInPage token={token} setToken={setToken} setAuth={setAuth} setSignUp={setSignUp}/>}/>
+          <Route exact path = '/signin' element = {
+            <>
+              <SignInPageHeader/>
+              <GoogleSignInPage token={token} setToken={setToken} setAuth={setAuth} setSignUp={setSignUp}/>
+            </>
+            }/>
           <Route path='/*' element={
             <>
               <Header auth={auth} userId={userId} setAuth={setAuth} />

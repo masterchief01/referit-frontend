@@ -12,6 +12,7 @@ const IntroPage = () => {
     const isReferee = window.localStorage.getItem('isReferee');
     const auth = window.localStorage.getItem('auth');
     return (
+        
     <Container>
     <Row>
         <Col/>
