@@ -7,7 +7,7 @@ import logo from "../../Assets/images/logoR.png";
 const SignInPageHeader = () => {
 
   return (
-    <header>
+    <header data-testid="my-component">
       <Navbar bg="light" expand="lg" collapseOnSelect>
         <Container>
           <Navbar.Brand href="/">
